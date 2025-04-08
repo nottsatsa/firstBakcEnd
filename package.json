@@ -1,0 +1,26 @@
+{
+  "name": "firstbakcend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nottsatsa/firstBakcEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nottsatsa/firstBakcEnd/issues"
+  },
+  "homepage": "https://github.com/nottsatsa/firstBakcEnd#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.9",
+    "uuid": "^11.1.0"
+  }
+}
