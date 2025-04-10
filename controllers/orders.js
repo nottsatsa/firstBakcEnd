@@ -1,15 +1,16 @@
 let orders = [];
 import { users } from './users.js';
+import { v4 as uuidv4 } from 'uuid';
 // app.post('/order/create',);
-
 export const createOrder = (request, response) => {
-  const { food, price, createDate, updateDate, id } = request.body;
+  const { food, price, createDate, updateDate, id, orderId } = request.body;
   orders.push({
     id: id,
     food,
     price,
     createDate,
     updateDate,
+    orderId,
   });
   users.find((user) => {
     if (user.id === id) {
@@ -18,6 +19,7 @@ export const createOrder = (request, response) => {
         price,
         createDate: Date(),
         updateDate,
+        orderId: uuidv4(),
       });
     }
   });
@@ -36,13 +38,18 @@ export const getOrderById = (request, response) => {
 
 // app.put('/order/update', );
 export const updateOrder = (request, response) => {
-  const { food, price, createDate, id } = request.body;
+  const { food, price, id, orderId } = request.body;
   users.map((user) => {
     if (user.id === id) {
-      user.order.food = food;
-      user.order.price = price;
-      user.order.createDate = createDate;
-      user.order.updateDate = Date();
+      user.order.map((zahialga) => {
+        if (zahialga.orderId === orderId) {
+          zahialga.food = food;
+          zahialga.price = price;
+          zahialga.updateDate = Date();
+          zahialga.totalOrders = user.order.length;
+          console.log(user.order, user.order.length, 'user order');
+        }
+      });
     }
   });
   response.send({ success: true, message: 'update data amjilttai' });

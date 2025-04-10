@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const users = [];
 let orders = [];
 export const createUser = (request, response) => {
-  const { username, gender, age, email, order } = request.body;
+  const { username, gender, age, email, order, totalOrders } = request.body;
 
   const user = users.find((user) => user.email === email);
   if (user) {
@@ -11,7 +11,15 @@ export const createUser = (request, response) => {
       message: 'bga email',
     });
   } else {
-    users.push({ username, gender, age, email, id: uuidv4(), order });
+    users.push({
+      username,
+      gender,
+      age,
+      email,
+      id: uuidv4(),
+      order,
+      totalOrders,
+    });
     response.send({ success: true, message: 'amjilttai' });
   }
 };

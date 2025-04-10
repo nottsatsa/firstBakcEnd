@@ -224,11 +224,19 @@
 import express, { json, request, response } from 'express';
 import { userRouter } from './routes/users.js';
 import { orderRouter } from './routes/orders.js';
-const port = 8100; //backend iin koduud 8000-s deesh bn
+
+import dotenv from 'dotenv';
+import cors from 'cors';
+dotenv.config();
+const port = process.env.PORT;
+// const port = dotenv;
+// const port = 8100; //backend iin koduud 8000-s deesh bn
 
 const app = express();
 
 app.use(json());
+app.use(cors());
+
 app.use(userRouter);
 app.use(orderRouter);
 

@@ -19,6 +19,8 @@
   "homepage": "https://github.com/nottsatsa/firstBakcEnd#readme",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "nodemon": "^3.1.9",
     "uuid": "^11.1.0"
